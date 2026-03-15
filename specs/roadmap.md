@@ -10,6 +10,7 @@ A web application to help plan various trips.
 | Phase | Description | Status | Agent |
 | :--- | :--- | :--- | :--- |
 | **Phase 1** | **Foundation & Utility**: Scaffolding, DB, Templates, Language Hub | [x] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
+| **Phase 1.1** | **UI/UX Polish**: Dashboard Layout, Animations, Feedback Systems | [Plan] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
 | **Phase 2** | **Social Insight**: YouTube/IG/Threads Embeds, Highlights Extraction | [Todo] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
 | **Phase 3** | **Offline & Checklists**: Advanced Storage, Shopping Checklist | [Todo] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
 
@@ -29,7 +30,18 @@ A web application to help plan various trips.
 
 ---
 
-## Current Status: Phase 2 - Social Insight Hub [Plan]
+## Current Status: Phase 1.1 - UI/UX Polish [Plan]
+
+| Task | Status | Agent | Description |
+| :--- | :--- | :--- | :--- |
+| **1.1.1 Implementation Plan (v2)** | [x] | **[Antigravity]** | 繁中化、日韓分區、UGC 單字功能設計 |
+| **1.1.2 UI Localization (TW)** | [Ready for QA] | **[Claude]** | 全介面翻譯為繁體中文，優化 CJK 字體 |
+| **1.1.3 Language Hub Refactor** | [Ready for QA] | **[Claude]** | 實作日韓分區切換與「新增單字」表單 |
+| **1.1.4 Dexie.js UGC Sync** | [Ready for QA] | **[Claude]** | 將使用者自定義單字持久化至 IndexedDB |
+| **1.1.5 Toast Feedback System** | [Ready for QA] | **[Claude]** | 實作全域玻璃擬態提示視窗 (Toast) |
+| **1.1.6 Phase 1.1 Verification** | [Todo] | **[Antigravity]** | 驗證 UGC 儲存、翻譯完整性與手機端體驗 |
+
+---
 
 | Task | Status | Agent | Description |
 | :--- | :--- | :--- | :--- |

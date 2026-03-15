@@ -24,4 +24,8 @@ db.version(1).stores({
   languageGuide: '++id, tripId, language, category, phrase, translation, pronunciation',
 })
 
+db.version(2).stores({
+  languageGuide: '++id, tripId, language, category, phrase, translation, pronunciation, isCustom',
+})
+
 export default db

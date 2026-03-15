@@ -1,14 +1,15 @@
 import { useState } from 'react'
 import './TemplateGallery.css'
+import { useToast } from './Toast'
 
 const CATEGORIES = [
   {
     id: 'food',
-    label: 'Food & Dining',
+    label: '美食餐廳',
     emoji: '🍜',
     prompts: [
       {
-        title: 'Local Restaurant Finder',
+        title: '在地餐廳搜尋',
         template: `Find the best local restaurants near [LOCATION] that are:
 - Authentic & non-touristy
 - Open at [TIME]
@@ -20,7 +21,7 @@ Provide: name, address, must-order dish, price range, and a one-line reason why 
 FORMAT: STRUCTURED_BLOCK`,
       },
       {
-        title: 'Street Food Guide',
+        title: '街頭小吃指南',
         template: `List the top street food spots in [LOCATION] with:
 - Name of dish and vendor location
 - Best time to visit
@@ -33,11 +34,11 @@ FORMAT: STRUCTURED_BLOCK`,
   },
   {
     id: 'shopping',
-    label: 'Shopping',
+    label: '購物逛街',
     emoji: '🛍️',
     prompts: [
       {
-        title: 'Local Market Guide',
+        title: '在地市場指南',
         template: `What are the best local markets in [LOCATION] for:
 - Souvenirs & handicrafts
 - Fresh produce
@@ -48,7 +49,7 @@ Include: market name, location, operating hours, and what to look for.
 FORMAT: STRUCTURED_BLOCK`,
       },
       {
-        title: 'Bargaining Tips',
+        title: '殺價技巧指南',
         template: `Provide cultural bargaining tips for shopping in [COUNTRY/REGION]:
 - Is bargaining acceptable?
 - Starting price strategy
@@ -61,11 +62,11 @@ FORMAT: STRUCTURED_BLOCK`,
   },
   {
     id: 'attractions',
-    label: 'Attractions',
+    label: '景點探索',
     emoji: '🏛️',
     prompts: [
       {
-        title: 'Hidden Gems',
+        title: '隱藏秘境探訪',
         template: `What are the hidden gems or underrated attractions in [LOCATION] that most tourists miss?
 
 For each: name, why it's special, best time to visit, how to get there, estimated time needed.
@@ -73,7 +74,7 @@ For each: name, why it's special, best time to visit, how to get there, estimate
 FORMAT: STRUCTURED_BLOCK`,
       },
       {
-        title: 'Day Trip Planner',
+        title: '一日行程規劃',
         template: `Plan a full-day itinerary in [LOCATION] starting at [START_TIME]:
 - Morning, afternoon, and evening activities
 - Include meal breaks
@@ -86,11 +87,11 @@ FORMAT: STRUCTURED_BLOCK`,
   },
   {
     id: 'events',
-    label: 'Events',
+    label: '活動節慶',
     emoji: '🎉',
     prompts: [
       {
-        title: 'Local Events & Festivals',
+        title: '在地活動與節慶',
         template: `What local events, festivals, or cultural happenings are in [LOCATION] during [MONTH/DATES]?
 
 Include: event name, dates, location, significance, and how to participate or attend.
@@ -98,7 +99,7 @@ Include: event name, dates, location, significance, and how to participate or at
 FORMAT: STRUCTURED_BLOCK`,
       },
       {
-        title: 'Nightlife Guide',
+        title: '夜生活指南',
         template: `What is the nightlife scene like in [LOCATION]?
 - Top areas/neighborhoods
 - Best bars, clubs, or live music venues
@@ -111,11 +112,11 @@ FORMAT: STRUCTURED_BLOCK`,
   },
   {
     id: 'transport',
-    label: 'Transport',
+    label: '交通移動',
     emoji: '🚌',
     prompts: [
       {
-        title: 'Getting Around Guide',
+        title: '當地交通全攻略',
         template: `How do I get around [LOCATION] efficiently?
 - Available transport options (metro, bus, taxi, rideshare)
 - Recommended apps for [COUNTRY]
@@ -126,7 +127,7 @@ FORMAT: STRUCTURED_BLOCK`,
 FORMAT: STRUCTURED_BLOCK`,
       },
       {
-        title: 'Airport to City Transfer',
+        title: '機場往返市區交通',
         template: `What are the options for traveling from [AIRPORT] to [DESTINATION] in [CITY]?
 
 Compare: taxi, public transit, shuttle, rideshare — by cost, time, and ease.
@@ -140,31 +141,30 @@ FORMAT: STRUCTURED_BLOCK`,
 export default function TemplateGallery() {
   const [activeCategory, setActiveCategory] = useState(CATEGORIES[0].id)
   const [copiedId, setCopiedId] = useState(null)
+  const { showToast } = useToast()
 
   const activePrompts = CATEGORIES.find((c) => c.id === activeCategory)?.prompts ?? []
 
   const handleCopy = async (prompt, id) => {
     try {
       await navigator.clipboard.writeText(prompt.template)
-      setCopiedId(id)
-      setTimeout(() => setCopiedId(null), 2000)
     } catch {
-      // fallback for older browsers
       const el = document.createElement('textarea')
       el.value = prompt.template
       document.body.appendChild(el)
       el.select()
       document.execCommand('copy')
       document.body.removeChild(el)
-      setCopiedId(id)
-      setTimeout(() => setCopiedId(null), 2000)
     }
+    setCopiedId(id)
+    setTimeout(() => setCopiedId(null), 2000)
+    showToast('📋 提示詞已複製！', 'success')
   }
 
   return (
     <section className="template-gallery">
-      <h2 className="tg-title">AI Prompt Templates</h2>
-      <p className="tg-subtitle">One-tap prompts optimized for AI travel research</p>
+      <h2 className="tg-title">AI 提示詞模板</h2>
+      <p className="tg-subtitle">一鍵複製，專為 AI 旅遊研究優化</p>
 
       <nav className="tg-categories" role="tablist">
         {CATEGORIES.map((cat) => (
@@ -192,9 +192,9 @@ export default function TemplateGallery() {
               <button
                 className={`tg-copy-btn ${isCopied ? 'copied' : ''}`}
                 onClick={() => handleCopy(prompt, id)}
-                aria-label={isCopied ? 'Copied!' : 'Copy prompt'}
+                aria-label={isCopied ? '已複製！' : '複製提示詞'}
               >
-                {isCopied ? '✓ Copied!' : '📋 Copy Prompt'}
+                {isCopied ? '✓ 已複製！' : '📋 複製提示詞'}
               </button>
             </article>
           )

@@ -1,0 +1,49 @@
+/* ============================================
+   Toast Notification — Glassmorphism
+   ============================================ */
+
+.toast-container {
+  position: fixed;
+  bottom: var(--space-8);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  pointer-events: none;
+}
+
+.toast {
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  animation: toast-in 0.25s ease forwards;
+}
+
+.toast--success {
+  border-color: hsla(145, 65%, 55%, 0.35);
+  background: hsla(145, 40%, 15%, 0.75);
+  box-shadow: 0 4px 24px hsla(145, 65%, 30%, 0.3), var(--glass-shadow);
+}
+
+.toast--error {
+  border-color: hsla(355, 75%, 60%, 0.35);
+  background: hsla(355, 40%, 15%, 0.75);
+  box-shadow: 0 4px 24px hsla(355, 75%, 40%, 0.3), var(--glass-shadow);
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
