@@ -29,7 +29,7 @@ A web application to help plan various trips.
 
 ---
 
-## Current Status: Phase 2 - Requirements Analysis
+## Current Status: Phase 2 - Social Insight Hub [Plan]
 
 | Task | Status | Agent | Description |
 | :--- | :--- | :--- | :--- |
