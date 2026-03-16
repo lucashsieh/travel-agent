@@ -10,7 +10,8 @@ A web application to help plan various trips.
 | Phase | Description | Status | Agent |
 | :--- | :--- | :--- | :--- |
 | **Phase 1** | **Foundation & Utility**: Scaffolding, DB, Templates, Language Hub | [x] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
-| **Phase 1.1** | **UI/UX Polish**: Dashboard Layout, Animations, Feedback Systems | [Plan] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
+| **Phase 1.1** | **UI/UX Polish**: Localization, JP/KR Hub, UGC, Toast System | [x] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
+| **Phase 1.2** | **Modern Redesign**: Responsive Mobile App Shell, Soft UI, Animations | [x] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
 | **Phase 2** | **Social Insight**: YouTube/IG/Threads Embeds, Highlights Extraction | [Todo] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
 | **Phase 3** | **Offline & Checklists**: Advanced Storage, Shopping Checklist | [Todo] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
 
@@ -35,11 +36,26 @@ A web application to help plan various trips.
 | Task | Status | Agent | Description |
 | :--- | :--- | :--- | :--- |
 | **1.1.1 Implementation Plan (v2)** | [x] | **[Antigravity]** | 繁中化、日韓分區、UGC 單字功能設計 |
-| **1.1.2 UI Localization (TW)** | [Ready for QA] | **[Claude]** | 全介面翻譯為繁體中文，優化 CJK 字體 |
-| **1.1.3 Language Hub Refactor** | [Ready for QA] | **[Claude]** | 實作日韓分區切換與「新增單字」表單 |
-| **1.1.4 Dexie.js UGC Sync** | [Ready for QA] | **[Claude]** | 將使用者自定義單字持久化至 IndexedDB |
-| **1.1.5 Toast Feedback System** | [Ready for QA] | **[Claude]** | 實作全域玻璃擬態提示視窗 (Toast) |
-| **1.1.6 Phase 1.1 Verification** | [Todo] | **[Antigravity]** | 驗證 UGC 儲存、翻譯完整性與手機端體驗 |
+| **1.1.2 UI Localization (TW)** | [x] | **[Claude]** | 全介面翻譯為繁體中文，優化 CJK 字體 |
+| **1.1.3 Language Hub Refactor** | [x] | **[Claude]** | 實作日韓分區切換與「新增單字」表單 |
+| **1.1.4 Dexie.js UGC Sync** | [x] | **[Claude]** | 將使用者自定義單字持久化至 IndexedDB |
+| **1.1.5 Toast Feedback System** | [x] | **[Claude]** | 實作全域玻璃擬態提示視窗 (Toast) |
+| **1.1.6 Phase 1.1 Verification** | [x] | **[Antigravity]** | 驗證 UGC 儲存、翻譯完整性與手機端體驗 |
+
+---
+
+## Phase 1.2: Modern UI/UX Redesign [x]
+
+| Task | Status | Agent | Description |
+| :--- | :--- | :--- | :--- |
+| **1.2.1 Design Proposal** | [x] | **[Antigravity]** | 擬定 Modern RWD Mobile App 風格提案 |
+| **1.2.2 Design System 2.0** | [x] | **[Claude]** | 重構 CSS Tokens，引入 Soft UI 與進階玻璃擬態 |
+| **1.2.3 App Shell Layout** | [x] | **[Claude]** | 實作底部導航 (Bottom Nav) 與側邊欄 (Sidebar) |
+| **1.2.4 Card Components** | [x] | **[Claude]** | 重新設計全站卡片組件，優化層次感 |
+| **1.2.5 Animation Layer** | [x] | **[Claude]** | 整合 Framer Motion 實作流暢轉場動畫 |
+| **1.2.6 Mobile Verification** | [x] | **[Antigravity]** | 確保在各類行動裝置上具備原生 App 體驗 |
+
+---
 
 ---
 

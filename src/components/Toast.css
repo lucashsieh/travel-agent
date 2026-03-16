@@ -1,10 +1,10 @@
 /* ============================================
-   Toast Notification — Glassmorphism
+   Toast Notification v2.0
    ============================================ */
 
 .toast-container {
   position: fixed;
-  bottom: var(--space-8);
+  bottom: calc(var(--bottom-nav-h) + var(--space-5));
   left: 50%;
   transform: translateX(-50%);
   z-index: var(--z-toast);
@@ -15,6 +15,12 @@
   pointer-events: none;
 }
 
+@media (min-width: 768px) {
+  .toast-container {
+    bottom: var(--space-8);
+  }
+}
+
 .toast {
   padding: var(--space-3) var(--space-6);
   border-radius: var(--radius-full);
@@ -22,28 +28,16 @@
   font-weight: var(--font-semibold);
   color: var(--color-text-primary);
   white-space: nowrap;
-  animation: toast-in 0.25s ease forwards;
 }
 
 .toast--success {
-  border-color: hsla(145, 65%, 55%, 0.35);
-  background: hsla(145, 40%, 15%, 0.75);
-  box-shadow: 0 4px 24px hsla(145, 65%, 30%, 0.3), var(--glass-shadow);
+  border: 0.5px solid hsla(152, 60%, 52%, 0.35);
+  background: hsla(152, 40%, 12%, 0.82);
+  box-shadow: 0 4px 24px hsla(152, 60%, 30%, 0.3), var(--glass-shadow);
 }
 
 .toast--error {
-  border-color: hsla(355, 75%, 60%, 0.35);
-  background: hsla(355, 40%, 15%, 0.75);
-  box-shadow: 0 4px 24px hsla(355, 75%, 40%, 0.3), var(--glass-shadow);
-}
-
-@keyframes toast-in {
-  from {
-    opacity: 0;
-    transform: translateY(12px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+  border: 0.5px solid hsla(355, 72%, 60%, 0.35);
+  background: hsla(355, 40%, 12%, 0.82);
+  box-shadow: 0 4px 24px hsla(355, 72%, 35%, 0.3), var(--glass-shadow);
 }

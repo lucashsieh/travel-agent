@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
 import LanguageGuide from './LanguageGuide'
+import { ToastProvider } from './Toast'
 
 describe('LanguageGuide Component', () => {
   const mockPhrases = [
@@ -8,15 +8,23 @@ describe('LanguageGuide Component', () => {
   ]
 
   it('should render correctly', () => {
-    render(<LanguageGuide phrases={mockPhrases} />)
-    expect(screen.getByText('Language Guide')).toBeInTheDocument()
-    expect(screen.getByText('Hello')).toBeInTheDocument()
+    render(
+      <ToastProvider>
+        <LanguageGuide phrases={mockPhrases} />
+      </ToastProvider>
+    )
+    expect(screen.getByText('語言手冊')).toBeInTheDocument()
+    expect(screen.getByText('你好')).toBeInTheDocument()
   })
 
   it('should filter by category', () => {
-    render(<LanguageGuide phrases={mockPhrases} />)
-    const filterBtn = screen.getByText('Test')
+    render(
+      <ToastProvider>
+        <LanguageGuide />
+      </ToastProvider>
+    )
+    const filterBtn = screen.getByRole('button', { name: '基礎用語' })
     fireEvent.click(filterBtn)
-    expect(screen.getByText('Hello')).toBeInTheDocument()
+    expect(screen.getAllByText('你好').length).toBeGreaterThan(0)
   })
 })
