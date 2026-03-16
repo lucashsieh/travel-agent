@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import './TemplateGallery.css'
 import { useToast } from './Toast'
 
@@ -166,40 +167,61 @@ export default function TemplateGallery() {
       <h2 className="tg-title">AI 提示詞模板</h2>
       <p className="tg-subtitle">一鍵複製，專為 AI 旅遊研究優化</p>
 
+      {/* Category Tabs */}
       <nav className="tg-categories" role="tablist">
         {CATEGORIES.map((cat) => (
-          <button
+          <motion.button
             key={cat.id}
             role="tab"
             aria-selected={activeCategory === cat.id}
             className={`tg-cat-btn ${activeCategory === cat.id ? 'active' : ''}`}
             onClick={() => setActiveCategory(cat.id)}
+            whileTap={{ scale: 0.93 }}
           >
             <span className="tg-cat-emoji">{cat.emoji}</span>
             <span className="tg-cat-label">{cat.label}</span>
-          </button>
+          </motion.button>
         ))}
       </nav>
 
-      <div className="tg-prompts">
-        {activePrompts.map((prompt, idx) => {
-          const id = `${activeCategory}-${idx}`
-          const isCopied = copiedId === id
-          return (
-            <article key={id} className="tg-card glass">
-              <h3 className="tg-card-title">{prompt.title}</h3>
-              <pre className="tg-card-preview">{prompt.template}</pre>
-              <button
-                className={`tg-copy-btn ${isCopied ? 'copied' : ''}`}
-                onClick={() => handleCopy(prompt, id)}
-                aria-label={isCopied ? '已複製！' : '複製提示詞'}
+      {/* Prompt Cards */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeCategory}
+          className="tg-prompts"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -6 }}
+          transition={{ duration: 0.22 }}
+        >
+          {activePrompts.map((prompt, idx) => {
+            const id = `${activeCategory}-${idx}`
+            const isCopied = copiedId === id
+            return (
+              <motion.article
+                key={id}
+                className="tg-card glass"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.06, duration: 0.28 }}
+                whileHover={{ y: -4, boxShadow: 'var(--glass-shadow-hover)' }}
+                whileTap={{ scale: 0.98 }}
               >
-                {isCopied ? '✓ 已複製！' : '📋 複製提示詞'}
-              </button>
-            </article>
-          )
-        })}
-      </div>
+                <h3 className="tg-card-title">{prompt.title}</h3>
+                <pre className="tg-card-preview">{prompt.template}</pre>
+                <motion.button
+                  className={`tg-copy-btn ${isCopied ? 'copied' : ''}`}
+                  onClick={() => handleCopy(prompt, id)}
+                  aria-label={isCopied ? '已複製！' : '複製提示詞'}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {isCopied ? '✓ 已複製！' : '📋 複製提示詞'}
+                </motion.button>
+              </motion.article>
+            )
+          })}
+        </motion.div>
+      </AnimatePresence>
     </section>
   )
 }
