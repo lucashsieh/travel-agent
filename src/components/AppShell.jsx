@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Compass, Sparkles, BookOpen, Map } from 'lucide-react'
 import TemplateGallery from './TemplateGallery'

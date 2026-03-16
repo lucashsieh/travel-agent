@@ -69,13 +69,5 @@ git submodule add https://github.com/lucashsieh/agent-core-brain.git .agent/core
 > 3. Check `specs/roadmap.md` and `specs/core-agents.md` for project context.
 > 4. From now on, follow the State Machine Protocol and use the `sync-state` skill for all progress tracking."
 
-### 3. 初始化 CLAUDE.md (Claude CLI Sync)
-為了讓 Claude CLI 也能同步核心協定，你**必須**指示 Antigravity 投影智慧：
-
-1. **執行同步**：要求 Antigravity 「執行 `claude-bridge` 技能以產生 `CLAUDE.md`」。
-2. **驗證行為**：切換至 Claude CLI 並輸入：
-   - `"Verify your current agent protocol and single source of truth."`
-   - **預期結果**：Claude 應能正確指出它必須遵循 `.agent/core-skills/GEMINI.md` 並使用 `specs/roadmap.md` 作為 SSoT。
-
-### 4. 初始化現況調查
+### 3. 初始化現況調查
 激活後，Agent 會自動進入 「Tech Lead」模式。請確保你的專案中存在 `specs/roadmap.md`，這是 Agent 運作的單一真理來源。

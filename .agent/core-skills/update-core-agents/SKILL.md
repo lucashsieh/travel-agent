@@ -22,22 +22,24 @@ description: Use when you need to update the core agent skills and global instru
      git submodule update --remote .agent/core-skills
      ```
    - **選項 B (同時更新 Core Skills 與 Agent Behaviors)**：
-     除了上述 `submodule update` 指令外，還需要將拉取下來的最新設定檔，覆寫回專案或系統中對應的位置（視乎專案初始化時是如何連結的）：
+     除了上述 `submodule update` 指令外，還需要將拉取下來的最新設定檔，完整同步至專案中。
+     **重要：同步時必須確保頂層 `.md` 檔案與資料夾皆被包含：**
      ```bash
-     git submodule update --remote .agent/core-skills
-     # 假設 GEMINI.md 在專案根目錄下的 .gemini/ 中
-     cp -f .agent/core-skills/GEMINI.md .gemini/GEMINI.md 
-     # 重新建立 specs/core-agents.md 軟連結或直接覆寫
-     ln -sf ../.agent/core-skills/core-agents.md specs/core-agents.md
+     # 正確的同步指令 (確保來源目錄末端有 /.)
+     cp -rv .agent/core-skills/. /Users/lucas/Projects/travel-agent/.agent/core-skills/
      ```
 
-3. **處理變更與 Commit (可選)**：
-   如果指令成功且有新變更拉取下來，您可以詢問指揮官是否需要幫忙 commit 這個更新的指標：
-   ```bash
-   git add .agent/core-skills .gemini/GEMINI.md specs/core-agents.md
-   git commit -m "chore: update agent-core-brain submodule and agent behaviors to latest"
-   ```
+3. **強制驗證 (Mandatory Verification)**：
+   同步完成後，Agent **必須**執行 `ls -F` 檢查目標目錄，確認以下檔案未遺失：
+   - [ ] `GEMINI.md`
+   - [ ] `README.md`
+   - [ ] `core-agents.md`
+   - [ ] 各個技能資料夾 (如 `sync-state/`, `git-manager/` 等)
+
+4. **處理變更與 Commit (可選)**：
+   如果指令成功且有新變更拉取下來，您可以詢問指揮官是否需要幫忙 commit 這個更新的指標。
 
 ## ⚠️ 防呆機制 (Safety Checks)
-1. **報錯檢查**：如果指令報錯，請先檢查專案根目錄下是否有 `.gitmodules` 檔案，確認是否已經正確掛載。
-2. **Head 狀態**：遇到 `Detached HEAD` 警告是 Submodule 拉取最新 commit 的正常現象，不需驚慌。直接回報「Core Skills 已更新至最新版」。
+1. **全域檔案遺失 (The Markdown Trap)**：嚴禁僅使用 `cp -rv source_dir/ target_dir/` 而不加 `/.`，這可能導致頂層檔案被略過或目錄結構異常。
+2. **報錯檢查**：如果指令報錯，請先檢查專案根目錄下是否有 `.gitmodules` 檔案，確認是否已經正確掛載。
+3. **Head 狀態**：遇到 `Detached HEAD` 警告是正常現象。直接回報「Core Skills 已更新至最新版」。

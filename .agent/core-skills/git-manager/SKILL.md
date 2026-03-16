@@ -17,9 +17,11 @@ description: 處理所有與 Git 相關的操作。Use when user asks to "開新
 
 ### 情境 B：提交程式碼 (Commit & Push)
 1. 執行 `git status` 確認變更。
-2. 執行 `git add .`。
-3. 遵循 Conventional Commits：`git commit -m "feat/fix/docs: 具體說明"`
-4. 執行 `git push origin HEAD`。
+2. **分支檢查 (Guard)**：執行 `git branch --show-current`。若當前分支為 `main` 或 `master`，**必須停止**並要求切換至功能分支。
+3. 執行 `git add .` (排除金鑰檔案)。
+4. 遵循 Conventional Commits：`git commit -m "feat/fix/docs: 具體說明"`
+5. 執行 `git push origin HEAD`。
+6. **建立 PR**：若為功能分支，必須接著執行 `gh pr create` 並回報連結。
 
 ### 📋 Report 格式
 ```text

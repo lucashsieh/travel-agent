@@ -30,6 +30,14 @@
 
 * **留下施工證明**：任務完成或進行 UI 測試後，必須將截圖、測試日誌或 Diff 存入 `.agent/artifacts/` 供人類審核（Artifact-Driven）。
 
+### 2.1 🌿 分支與 PR 政策 (Branching & PR Policy)
+
+為了維護代碼穩定性，嚴禁 Agent 破壞以下 Git 流程：
+*   **禁止直推主幹 (No Direct Push to Main)**：對於任何既存專案（已有歷史提交的專案），嚴禁直接 `git push origin main` 或 `master`。
+*   **強制功能分支 (Feature Branches)**：所有開發必須在 `feature/` 或 `fix/` 分支進行。
+*   **PR 驗收制 (PR-Only)**：所有變更必須透過 `gh pr create` 提交，並在 `roadmap.md` 中標註 PR 連結，靜候指揮官 Merge。
+*   **例外狀況**：僅限於「全新初始化專案且遠端為空」的第一次提交，准許直接推送到 `main`。
+
 ## 3. 執行策略與童子軍規則 (Execution & Refactoring)
 
 * **遵循五步工作流**：1. 分析擴展點 -> 2. 實作 -> 3. 重構（清理周邊技術債） -> 4. 測試 -> 5. 解釋設計理念。
