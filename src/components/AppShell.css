@@ -145,11 +145,7 @@
 
   .bottom-nav-pill {
     position: absolute;
-    top: 4px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 36px;
+    inset: 6px 15%;
     border-radius: var(--radius-lg);
     background: var(--color-primary-subtle);
     border: 0.5px solid var(--glass-border-bright);
