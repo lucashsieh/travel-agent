@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Compass, Sparkles, BookOpen, Map } from 'lucide-react'
+import { Compass, Sparkles, BookOpen, Map, Film } from 'lucide-react'
 import TemplateGallery from './TemplateGallery'
 import LanguageGuide from './LanguageGuide'
+import SocialVault from './SocialVault'
 import './AppShell.css'
 
 const NAV_ITEMS = [
   { id: 'home',      label: '探索',    icon: Compass,   component: null },
   { id: 'templates', label: 'AI 模板', icon: Sparkles,  component: TemplateGallery },
   { id: 'language',  label: '語言手冊', icon: BookOpen,  component: LanguageGuide },
+  { id: 'social',    label: '靈感庫',  icon: Film,      component: SocialVault },
   { id: 'maps',      label: '導航',    icon: Map,       component: null },
 ]
 
@@ -52,6 +54,7 @@ function HomeScreen() {
         {[
           { icon: '✨', title: 'AI 提示詞模板', desc: '美食、景點、交通等分類模板，一鍵複製', tab: 'templates' },
           { icon: '🗣️', title: '語言手冊',      desc: '日韓常用語一鍵複製 + 語音朗讀',       tab: 'language' },
+          { icon: '🎬', title: '社群靈感庫',    desc: '收藏 YouTube、IG、Threads 旅遊靈感', tab: 'social' },
           { icon: '🗺️', title: '導航連結',      desc: 'Google / Apple Maps 一鍵導航',       tab: 'maps' },
         ].map((card, i) => (
           <motion.div
@@ -92,6 +95,7 @@ export default function AppShell() {
       case 'home':      return <HomeScreen key="home" />
       case 'templates': return <motion.div key="templates" variants={pageVariants} initial="initial" animate="animate" exit="exit"><TemplateGallery /></motion.div>
       case 'language':  return <motion.div key="language"  variants={pageVariants} initial="initial" animate="animate" exit="exit"><LanguageGuide /></motion.div>
+      case 'social':    return <motion.div key="social"    variants={pageVariants} initial="initial" animate="animate" exit="exit"><SocialVault /></motion.div>
       case 'maps':      return <MapsScreen key="maps" />
       default:          return null
     }
