@@ -20,7 +20,7 @@ const pageVariants = {
   exit:     { opacity: 0, y: -8, transition: { duration: 0.18, ease: [0.4, 0, 0.2, 1] } },
 }
 
-function HomeScreen() {
+function HomeScreen({ onTabChange }) {
   return (
     <motion.div className="home-screen" variants={pageVariants} initial="initial" animate="animate" exit="exit">
       <div className="home-hero">
@@ -60,6 +60,7 @@ function HomeScreen() {
           <motion.div
             key={card.tab}
             className="home-card glass"
+            onClick={() => onTabChange(card.tab)}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35 + i * 0.08, duration: 0.35 }}
@@ -92,7 +93,7 @@ export default function AppShell() {
 
   const renderPage = () => {
     switch (activeTab) {
-      case 'home':      return <HomeScreen key="home" />
+      case 'home':      return <HomeScreen key="home" onTabChange={setActiveTab} />
       case 'templates': return <motion.div key="templates" variants={pageVariants} initial="initial" animate="animate" exit="exit"><TemplateGallery /></motion.div>
       case 'language':  return <motion.div key="language"  variants={pageVariants} initial="initial" animate="animate" exit="exit"><LanguageGuide /></motion.div>
       case 'social':    return <motion.div key="social"    variants={pageVariants} initial="initial" animate="animate" exit="exit"><SocialVault /></motion.div>
