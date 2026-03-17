@@ -12,7 +12,7 @@ A web application to help plan various trips.
 | **Phase 1** | **Foundation & Utility**: Scaffolding, DB, Templates, Language Hub | [x] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
 | **Phase 1.1** | **UI/UX Polish**: Localization, JP/KR Hub, UGC, Toast System | [x] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
 | **Phase 1.2** | **Modern Redesign**: Responsive Mobile App Shell, Soft UI, Animations | [x] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
-| **Phase 2** | **Social Insight**: YouTube/IG/Threads Embeds, Highlights Extraction | [Todo] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
+| **Phase 2** | **Social Insight**: YouTube/IG/Threads Embeds, Highlights Extraction | [x] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
 | **Phase 3** | **Offline & Checklists**: Advanced Storage, Shopping Checklist | [Todo] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
 
 ---
@@ -56,6 +56,17 @@ A web application to help plan various trips.
 | **1.2.6 Mobile Verification** | [x] | **[Antigravity]** | 確保在各類行動裝置上具備原生 App 體驗 |
 
 ---
+
+## Phase 2: Social Insight Hub [x]
+
+| Task | Status | Agent | Description |
+| :--- | :--- | :--- | :--- |
+| **2.1 Implementation Plan (v3)** | [x] | **[Antigravity]** | 定義嵌入策略、資料架構與解析邏輯 |
+| **2.2 Media Storage Update** | [x] | **[Claude]** | 升級 Dexie Schema，支援社群媒體元數據儲存 |
+| **2.3 Embed Parser Utility** | [x] | **[Claude]** | 實作多平台 (YT/IG/Threads) URL 解析工具 |
+| **2.4 Unified Embed Player** | [x] | **[Claude]** | 建立可切換平台的嵌入式播放組件 |
+| **2.5 Social Vault UI** | [x] | **[Claude]** | 實作社群收藏頁面與「一鍵加入」功能 |
+| **2.6 Cross-platform QA** | [x] | **[Antigravity]** | 驗證嵌入內容在 Web/Mobile 上的渲染與互動穩定性 |
 
 ---
 
