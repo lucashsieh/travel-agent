@@ -28,11 +28,8 @@ dist-ssr
 target/
 dist
 dist-ssr
-node_modules
+**/node_modules/
+**/package-lock.json
 
 # Planning & Prompts
 specs/planning/
-
-# Agent Skills & Internal Sync
-.agent/
-.claude/
