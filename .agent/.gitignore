@@ -1,0 +1,13 @@
+# Ignore build artifacts and generated files in agent-core-brain
+node_modules/
+package-lock.json
+*.log
+artifacts/
+.DS_Store
+dist/
+build/
+.cache/
+sync-hub/tesserver
+sync-hub/tsc
+sync-hub/tsserver
+sync-hub/package-lock.json
