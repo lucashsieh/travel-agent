@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Build Artifacts
+.vite
+target/
+dist
+dist-ssr
+node_modules
