@@ -24,4 +24,12 @@ db.version(1).stores({
   languageGuide: '++id, tripId, language, category, phrase, translation, pronunciation',
 })
 
+db.version(2).stores({
+  languageGuide: '++id, tripId, language, category, phrase, translation, pronunciation, isCustom',
+})
+
+db.version(3).stores({
+  mediaEmbeds: '++id, tripId, platform, url, title, category, addedAt',
+})
+
 export default db

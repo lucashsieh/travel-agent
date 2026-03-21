@@ -1,0 +1,43 @@
+/* ============================================
+   Toast Notification v2.0
+   ============================================ */
+
+.toast-container {
+  position: fixed;
+  bottom: calc(var(--bottom-nav-h) + var(--space-5));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .toast-container {
+    bottom: var(--space-8);
+  }
+}
+
+.toast {
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+.toast--success {
+  border: 0.5px solid hsla(152, 60%, 52%, 0.35);
+  background: hsla(152, 40%, 12%, 0.82);
+  box-shadow: 0 4px 24px hsla(152, 60%, 30%, 0.3), var(--glass-shadow);
+}
+
+.toast--error {
+  border: 0.5px solid hsla(355, 72%, 60%, 0.35);
+  background: hsla(355, 40%, 12%, 0.82);
+  box-shadow: 0 4px 24px hsla(355, 72%, 35%, 0.3), var(--glass-shadow);
+}

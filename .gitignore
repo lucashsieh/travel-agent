@@ -22,3 +22,17 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Build Artifacts
+.vite
+target/
+dist
+dist-ssr
+**/node_modules/
+**/package-lock.json
+
+# Planning & Prompts
+specs/planning/
+
+# Agent Brain (Managed by Submodule or Ignore)
+.agent/

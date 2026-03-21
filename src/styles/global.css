@@ -1,5 +1,5 @@
 /* ============================================
-   Global Styles — Travel Agent
+   Global Styles v2.0 — Travel Agent
    ============================================ */
 
 *, *::before, *::after {
@@ -11,6 +11,7 @@
 html {
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -19,11 +20,14 @@ body {
   color: var(--color-text-primary);
   background-color: var(--color-bg-base);
   background-image:
-    radial-gradient(ellipse at 20% 20%, hsla(210, 100%, 30%, 0.12) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 80%, hsla(275, 80%, 40%, 0.1) 0%, transparent 50%);
+    radial-gradient(ellipse 60% 50% at 15% 10%, hsla(185, 82%, 35%, 0.14) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 85% 85%, hsla(262, 72%, 45%, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 35% at 75% 15%, hsla(210, 60%, 35%, 0.08) 0%, transparent 50%);
   background-attachment: fixed;
   min-height: 100vh;
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -31,13 +35,11 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  color: var(--color-primary-dark);
-}
-
 button {
   cursor: pointer;
   font-family: inherit;
+  border: none;
+  background: none;
 }
 
 input, textarea, select {
@@ -46,17 +48,10 @@ input, textarea, select {
 }
 
 /* Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--color-bg-surface);
-}
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
   background: var(--color-border-strong);
   border-radius: var(--radius-full);
 }
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-text-muted);
-}
+::-webkit-scrollbar-thumb:hover { background: var(--color-text-muted); }

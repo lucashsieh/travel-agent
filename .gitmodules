@@ -1,0 +1,3 @@
+[submodule ".agent/core-skills"]
+	path = .agent/core-skills
+	url = https://github.com/lucashsieh/agent-core-brain.git
