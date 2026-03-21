@@ -14,6 +14,7 @@ A web application to help plan various trips.
 | **Phase 1.2** | **Modern Redesign**: Responsive Mobile App Shell, Soft UI, Animations | [x] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
 | **Phase 2** | **Social Insight**: YouTube/IG/Threads Embeds, Highlights Extraction | [x] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
 | **Phase 2.1** | **Social Vault UX Refinement**: Adaptive Ratio, Lazy Loading, Mobile CSS | [x] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
+| **Phase 2.2** | **Social Vault Previews**: YouTube Thumbnails, Viewport Auto-load (IG) | [x] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
 | **Phase 3** | **Offline & Checklists**: Advanced Storage, Shopping Checklist | [Todo] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
 
 ---

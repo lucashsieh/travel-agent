@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { Youtube, Instagram, MessageCircle, ExternalLink } from 'lucide-react'
+import { Youtube, Instagram, MessageCircle, ExternalLink, Play } from 'lucide-react'
 import './EmbedPlayer.css'
 
 const PLATFORM_META = {
@@ -9,29 +9,65 @@ const PLATFORM_META = {
   threads:   { label: 'Threads',   Icon: MessageCircle, color: '#888',     ratio: 'auto' },
 }
 
+function useInView(ref) {
+  const [inView, setInView] = useState(false)
+  useEffect(() => {
+    if (!ref.current) return
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setInView(true) },
+      { threshold: 0.2 }
+    )
+    observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [ref])
+  return inView
+}
+
 export default function EmbedPlayer({ platform, embedId, embedUrl, title, url }) {
   const [isPlaying, setIsPlaying] = useState(false)
   const [loaded, setLoaded] = useState(false)
+  const containerRef = useRef(null)
+  const inView = useInView(containerRef)
   const meta = PLATFORM_META[platform] ?? { label: platform, Icon: ExternalLink, color: '#888', ratio: '16/9' }
   const { label, Icon, color, ratio } = meta
 
+  // Auto-load Instagram/Threads when scrolled into view
+  useEffect(() => {
+    if (inView && (platform === 'instagram' || platform === 'threads')) {
+      setIsPlaying(true)
+    }
+  }, [inView, platform])
+
   const renderEmbed = () => {
-    if (platform === 'youtube' || platform === 'instagram') {
+    // YouTube: show real thumbnail with play overlay
+    if (platform === 'youtube') {
       if (!isPlaying) {
         return (
-          <div 
-            className="embed-placeholder" 
+          <div
+            className="embed-placeholder embed-placeholder--youtube"
             style={{ aspectRatio: ratio }}
             onClick={() => setIsPlaying(true)}
           >
+            {embedId && (
+              <img
+                className="embed-thumbnail"
+                src={`https://img.youtube.com/vi/${embedId}/hqdefault.jpg`}
+                alt={title || 'YouTube video'}
+                loading="lazy"
+              />
+            )}
             <div className="embed-placeholder-overlay">
-              <Icon size={48} color={color} opacity={0.8} />
-              <button className="embed-play-hint">點擊載入內容</button>
+              <div className="embed-play-button">
+                <Play size={28} fill="white" color="white" />
+              </div>
             </div>
           </div>
         )
       }
+    }
 
+    // Instagram/Threads: auto-loaded via IntersectionObserver; show skeleton until ready
+    if (platform === 'youtube' || platform === 'instagram') {
       return (
         <div className="embed-frame-wrapper" style={{ aspectRatio: ratio }}>
           {!loaded && (
@@ -56,7 +92,7 @@ export default function EmbedPlayer({ platform, embedId, embedUrl, title, url })
       )
     }
 
-    // Threads: link card fallback
+    // Threads: link card fallback (auto-loaded, no iframe)
     return (
       <a
         className="embed-link-card"
@@ -72,6 +108,7 @@ export default function EmbedPlayer({ platform, embedId, embedUrl, title, url })
 
   return (
     <motion.div
+      ref={containerRef}
       className={`embed-player glass platform-${platform}`}
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
