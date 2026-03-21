@@ -33,3 +33,6 @@ dist-ssr
 
 # Planning & Prompts
 specs/planning/
+
+# Agent Brain (Managed by Submodule or Ignore)
+.agent/
