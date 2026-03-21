@@ -128,9 +128,13 @@
 .vault-card:hover .vault-delete-btn { opacity: 1; }
 
 @media (max-width: 640px) {
+  .social-vault { gap: var(--space-4); }
+  .vault-form { padding: var(--space-4); }
   .vault-grid {
     grid-template-columns: 1fr;
+    gap: var(--space-4);
   }
   .vault-delete-btn { opacity: 1; }
   .vault-input--title { flex: 1; }
+  .vault-add-btn { width: 100%; justify-content: center; }
 }

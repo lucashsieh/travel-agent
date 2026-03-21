@@ -3,7 +3,7 @@
 ## Project Overview
 A web application to help plan various trips.
 
-## Current Status: Planning & Specification
+## Current Status: Phase 3 - Planning (Offline & Checklists)
 
 ## Project Roadmap
 
@@ -13,7 +13,8 @@ A web application to help plan various trips.
 | **Phase 1.1** | **UI/UX Polish**: Localization, JP/KR Hub, UGC, Toast System | [x] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
 | **Phase 1.2** | **Modern Redesign**: Responsive Mobile App Shell, Soft UI, Animations | [x] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
 | **Phase 2** | **Social Insight**: YouTube/IG/Threads Embeds, Highlights Extraction | [x] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
-| **Phase 3** | **Offline & Checklists**: Advanced Storage, Shopping Checklist | [Plan] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
+| **Phase 2.1** | **Social Vault UX Refinement**: Adaptive Ratio, Lazy Loading, Mobile CSS | [x] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
+| **Phase 3** | **Offline & Checklists**: Advanced Storage, Shopping Checklist | [Todo] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
 
 ---
 
@@ -31,7 +32,7 @@ A web application to help plan various trips.
 
 ---
 
-## Current Status: Phase 1.1 - UI/UX Polish [Plan]
+## Phase 1.1: UI/UX Polish [x]
 
 | Task | Status | Agent | Description |
 | :--- | :--- | :--- | :--- |
@@ -78,8 +79,9 @@ A web application to help plan various trips.
 | PRD & Spec Sync | [x] | **[Antigravity]** | Finalize `specs/prd.md` based on plan v5 |
 | Document Roles & Archive | [x] | **[Antigravity]** | Assign entity-specific agents & archive plan |
 | Final Protocol Sync | [x] | **[Antigravity]** | Remove redundant specs and follow core skill protocol |
-| User Approval | [In Progress] | **[Antigravity]** | Get final go-ahead for Phase 1 construction |
-| Verification Setup | [Todo] | **[Antigravity]** | Prepare test cases for Phase 1 features |
+| User Approval | [x] | **[Antigravity]** | Get final go-ahead for Phase 1 construction |
+| Verification Setup | [x] | **[Antigravity]** | Prepare test cases for Phase 1 features |
+| Phase 3 Planning | [In Progress] | **[Antigravity]** | Define requirements for Offline & Checklists |
 
 ## Legend
 - `[Plan]`: Proposed by PM/Arch, needs USER approval.

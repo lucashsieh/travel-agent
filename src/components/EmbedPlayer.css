@@ -52,7 +52,6 @@
 .embed-frame-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
   background: var(--color-bg-elevated);
 }
 
@@ -65,7 +64,51 @@
   opacity: 0;
   transition: opacity 0.3s;
 }
+
+/* Instagram specific crop to hide header/footer junk */
+.platform-instagram .embed-frame-wrapper {
+  overflow: hidden;
+  height: clamp(300px, 80vw, 400px);
+  aspect-ratio: auto; /* override to prevent squishing */
+}
+.platform-instagram .embed-iframe {
+  height: 120%; /* zoom out a bit or shift */
+  top: -10%;
+}
+
 .embed-iframe--loaded { opacity: 1; }
+
+/* ── placeholder ── */
+.embed-placeholder {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-elevated);
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s;
+}
+.embed-placeholder:hover {
+  background: hsla(224, 28%, 15%, 0.8);
+}
+
+.embed-placeholder-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  pointer-events: none;
+}
+
+.embed-play-hint {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  background: rgba(255,255,255,0.05);
+  padding: 4px 12px;
+  border-radius: var(--radius-md);
+  border: 0.5px solid var(--glass-border);
+}
 
 /* ── skeleton shimmer ── */
 .embed-skeleton {
