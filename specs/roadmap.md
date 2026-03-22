@@ -16,6 +16,7 @@ A web application to help plan various trips.
 | **Phase 2.1** | **Social Vault UX Refinement**: Adaptive Ratio, Lazy Loading, Mobile CSS | [x] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
 | **Phase 2.2** | **Social Vault Previews**: YouTube Thumbnails, Viewport Auto-load (IG) | [x] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
 | **Phase 3** | **Offline & Checklists**: Advanced Storage, Shopping Checklist | [Todo] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
+| **Phase 4** | **Architecture Evolution**: 導入 `obra/superpowers` 狀態機管線與 Subagent 委派機制 | [Plan] | **[Antigravity]** (@Arch) |
 
 ---
 
