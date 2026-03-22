@@ -14,8 +14,10 @@ A web application to help plan various trips.
 | **Phase 1.2** | **Modern Redesign**: Responsive Mobile App Shell, Soft UI, Animations | [x] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
 | **Phase 2** | **Social Insight**: YouTube/IG/Threads Embeds, Highlights Extraction | [x] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
 | **Phase 2.1** | **Social Vault UX Refinement**: Adaptive Ratio, Lazy Loading, Mobile CSS | [x] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
-| **Phase 2.2** | **Social Vault Previews**: YouTube Thumbnails, Viewport Auto-load (IG) | [x] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
+| **Phase 2.2** | **Social Vault Previews**: YouTube Thumbnails, Viewport Auto-load (IG) | [x] | **[Antigravity]** (@QA) / **[Claude]** (Dev) |
+| **Phase 2.3** | **Social Vault Maintenance**: Threads Embed Fix | [Todo] | **[Claude]** (@DEV) |
 | **Phase 3** | **Offline & Checklists**: Advanced Storage, Shopping Checklist | [Todo] | **[Antigravity]** (Plan/Test) / **[Claude]** (Dev) |
+| **Phase 4** | **Architecture Evolution**: 導入 `obra/superpowers` 狀態機管線與 Subagent 委派機制 | [Plan] | **[Antigravity]** (@Arch) |
 
 ---
 
@@ -56,6 +58,14 @@ A web application to help plan various trips.
 | **1.2.4 Card Components** | [x] | **[Claude]** | 重新設計全站卡片組件，優化層次感 |
 | **1.2.5 Animation Layer** | [x] | **[Claude]** | 整合 Framer Motion 實作流暢轉場動畫 |
 | **1.2.6 Mobile Verification** | [x] | **[Antigravity]** | 確保在各類行動裝置上具備原生 App 體驗 |
+
+---
+
+## Phase 2.3: Social Vault Maintenance [In Progress]
+
+| Task | Status | Agent | Description |
+| :--- | :--- | :--- | :--- |
+| **2.3.1 Threads Embed Fix** | [x] | **[Claude]** | 修復 Threads 僅顯示連結的問題，實作 native iframe 播放 |
 
 ---
 

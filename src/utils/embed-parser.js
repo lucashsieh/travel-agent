@@ -42,7 +42,8 @@ function buildEmbedUrl(platform, embedId, originalUrl) {
     case 'instagram':
       return `https://www.instagram.com/p/${embedId}/embed/`
     case 'threads':
-      return originalUrl
+      // Ensure we use threads.net for embeds as threads.com often denies framing
+      return `https://www.threads.net/t/${embedId}/embed`
     default:
       return originalUrl
   }

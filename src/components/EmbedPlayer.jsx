@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Youtube, Instagram, MessageCircle, ExternalLink, Play } from 'lucide-react'
+import { parseEmbedUrl } from '../utils/embed-parser'
 import './EmbedPlayer.css'
 
 const PLATFORM_META = {
@@ -28,6 +29,12 @@ export default function EmbedPlayer({ platform, embedId, embedUrl, title, url })
   const [loaded, setLoaded] = useState(false)
   const containerRef = useRef(null)
   const inView = useInView(containerRef)
+  
+  // Runtime Fix for Legacy Data: Re-derive threads.net URL if it was saved as .com
+  const effectiveEmbedUrl = (platform === 'threads' && url)
+    ? (parseEmbedUrl(url)?.embedUrl || embedUrl)
+    : embedUrl
+
   const meta = PLATFORM_META[platform] ?? { label: platform, Icon: ExternalLink, color: '#888', ratio: '16/9' }
   const { label, Icon, color, ratio } = meta
 
@@ -37,6 +44,8 @@ export default function EmbedPlayer({ platform, embedId, embedUrl, title, url })
       setIsPlaying(true)
     }
   }, [inView, platform])
+
+
 
   const renderEmbed = () => {
     // YouTube: show real thumbnail with play overlay
@@ -66,10 +75,10 @@ export default function EmbedPlayer({ platform, embedId, embedUrl, title, url })
       }
     }
 
-    // Instagram/Threads: auto-loaded via IntersectionObserver; show skeleton until ready
-    if (platform === 'youtube' || platform === 'instagram') {
+    // YouTube/Instagram/Threads: iframe rendering (Threads auto-loaded via IntersectionObserver)
+    if (platform === 'youtube' || platform === 'instagram' || platform === 'threads') {
       return (
-        <div className="embed-frame-wrapper" style={{ aspectRatio: ratio }}>
+        <div className={`embed-frame-wrapper platform-${platform}--frame`} style={{ aspectRatio: ratio }}>
           {!loaded && (
             <div className="embed-skeleton">
               <motion.div
@@ -81,7 +90,7 @@ export default function EmbedPlayer({ platform, embedId, embedUrl, title, url })
           )}
           <iframe
             className={`embed-iframe ${loaded ? 'embed-iframe--loaded' : ''}`}
-            src={embedUrl}
+            src={effectiveEmbedUrl}
             title={title || label}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
@@ -92,7 +101,7 @@ export default function EmbedPlayer({ platform, embedId, embedUrl, title, url })
       )
     }
 
-    // Threads: link card fallback (auto-loaded, no iframe)
+    // Fallback: link card
     return (
       <a
         className="embed-link-card"
