@@ -76,6 +76,17 @@
   top: -10%;
 }
 
+/* Threads: variable-height post embed */
+.platform-threads .embed-frame-wrapper,
+.platform-threads--frame {
+  height: clamp(280px, 75vw, 500px);
+  aspect-ratio: auto;
+}
+.platform-threads .embed-iframe {
+  height: 100%;
+  top: 0;
+}
+
 .embed-iframe--loaded { opacity: 1; }
 
 /* ── placeholder ── */
